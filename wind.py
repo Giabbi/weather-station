@@ -56,3 +56,4 @@ while True:
         store_speeds = reset_read(store_speeds) #*
         start_time = time() #*
         j+=1 #*
+        i = 0 #*
