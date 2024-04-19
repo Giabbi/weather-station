@@ -63,7 +63,7 @@ def get_value():
             data.append(volts[wind])
         sleep(0.1)
 
-    return get_average(data)
+    return [get_average(data), volts[wind]]
 
 def get_direction(dir):
     if dir > 337.5 or dir <= 22.5:
@@ -86,6 +86,7 @@ def get_direction(dir):
         return "Something went wrong"
 
 while True:
-    currentDir = round(get_value(), 1)
-    print(f"The average value is {currentDir} while the direction is {get_direction(currentDir)}")
-    print(f"The average value is {round(get_value(), 1)} while the direction is {get_direction(round(get_value(), 1))}")
+    results = get_value()
+    currentDir = round(results[1], 1)
+    avgDir = round(results[0], 1)
+    print(f"The average value is {avgDir} while the current direction is {get_direction(currentDir)} and in degrees {currentDir}")
